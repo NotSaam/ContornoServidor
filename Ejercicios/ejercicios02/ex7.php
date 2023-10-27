@@ -28,6 +28,10 @@ for ($i = 1; $i <= 100; $i++) {
     $combinada = []; 
 }
 
+if()
+
+
+
 $cerocerto=0;
 $unacerto=0;
 $dousacerto=0;

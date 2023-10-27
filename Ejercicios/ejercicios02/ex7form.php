@@ -36,26 +36,26 @@
 
         <br>
         <label for="num1">Numero 1: </label><br>
-        <input type="number" id="num1" name="num1">
+        <input type="number" id="num1" name="apuesta">
 
         <br>
         <label for="num2">Numero 2: </label><br>
-        <input type="number" id="num2" name="num2">
+        <input type="number" id="num2" name="apuesta">
         <br>
         <label for="num3">Numero 3: </label><br>
-        <input type="number" id="num3" name="num3">
+        <input type="number" id="num3" name="apuesta">
 
         <br>
         <label for="num4">Numero 4: </label><br>
-        <input type="number" id="num4" name="num4">
+        <input type="number" id="num4" name="apuesta">
 
         <br>
         <label for="num5">Numero 5: </label><br>
-        <input type="number" id="num5" name="num5">
+        <input type="number" id="num5" name="apuesta">
 
         <br>
         <label for="num6">Numero 6: </label><br>
-        <input type="number" id="num6" name="num6"><br>
+        <input type="number" id="num6" name="apuesta"><br>
         
         <br>
         <label for="intentos">Cantidad de intentos: </label><br>

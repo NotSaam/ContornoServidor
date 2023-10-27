@@ -38,7 +38,8 @@ $seiscerto=0;
 
 $apuesta=$_POST['apuesta'];
 
-
+//Realizar con esta funcion
+array_intersect ($combinada,$apuesta)
 
 
 

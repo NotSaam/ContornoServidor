@@ -28,7 +28,22 @@ for ($i = 1; $i <= 100; $i++) {
     $combinada = []; 
 }
 
+$cerocerto=0;
+$unacerto=0;
+$dousacerto=0;
+$tresacerto=0;
+$catrocerto=0;
+$cincocerto=0;
+$seiscerto=0;
+
+$apuesta=$_POST['apuesta'];
+
+
+
+
+
 ?>
-    </body>
+
+</body>
 
 </html>

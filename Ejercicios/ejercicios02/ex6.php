@@ -23,8 +23,6 @@
     }elseif($clave<1 || $clave >99){
         echo"<p class= 'error' >La clave debe ser un numero entre 1 e 99</p>";
     
-    }else{
-        
     }
     ?>
 

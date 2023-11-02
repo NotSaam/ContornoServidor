@@ -31,7 +31,7 @@
 </style>
 
 <body>
-    <form action="ex7.php" method="POST">
+    <form action="ex8.php" method="POST">
         <h2>Escribe los numeros de la combinada</h2>
 
         <br>
@@ -56,7 +56,7 @@
         <br>
         <label for="num6">Numero 6: </label><br>
         <input type="number" id="num6" name="apuesta[num6]"><br>
-        
+
         <br>
         <label for="intentos">Cantidad de intentos: </label><br>
         <input type="number" id="intentos" name="intentos"><br>

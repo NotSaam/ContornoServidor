@@ -5,8 +5,9 @@
     </head>
     <body>
 
-
     <?php
+    $num
+
 
     ?>
     </body>

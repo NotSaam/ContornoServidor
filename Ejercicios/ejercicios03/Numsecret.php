@@ -31,7 +31,7 @@
             echo "¡Enhorabuena, adivinaste! Solo te tomó $intentos intentos.";
         }
         // En lugar de generar un nuevo número aleatorio, mantenemos el mismo valor
-        echo "<a href=numsecretform.php?aleatorio=$aleatorio&intentos=$intentos>Volver</a>";
+        echo "<br><a href=numsecretform.php?aleatorio=$aleatorio&intentos=$intentos>Volver</a>";
     }
     ?>
 </body>

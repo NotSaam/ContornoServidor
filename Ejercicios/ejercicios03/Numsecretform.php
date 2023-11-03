@@ -7,10 +7,11 @@
     <body>
     <h1>Adivina o numero secreto</h1>
 
-<form method="post" action="calculadora.php">
+<form method="post" action="numsecret.php">
     <label for="numero">Numero:</label>
     <input type="number" name="numero" id="numero" required>
-    <input type="submit" value="Enviar">
+    <input type="hidden" name="numero" id="numero" required>
+    <input type="submit" value="Adivinar">
 </form>
 
 

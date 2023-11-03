@@ -10,7 +10,7 @@
 <form method="post" action="calculadora.php">
     <label for="numero">Numero:</label>
     <input type="number" name="numero" id="numero" required>
-    <input type="hidden" name="numero" id="numero" >
+    <input type="hidden" name="numero" id="numero"  value>
     <input type="submit" value="Enviar">
 </form>
 

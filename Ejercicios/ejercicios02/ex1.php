@@ -22,6 +22,6 @@
     }
     echo "<p> Total : $suma &euro; </p>";
 
-    ?>    
+    ?>
     </body>
 </html>

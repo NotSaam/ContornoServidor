@@ -42,14 +42,6 @@ background:pink;
 
     
     <?php
-    $agenda=array();
 
-    if(i!empty($_POST["nombre"])){
-        $nombre = $_POST["nombre"];
-    }
-
-    if(!empty($_POST["telefono"])){
-        $telefono=$_POST["telefono"];
-    }
     ?>
 

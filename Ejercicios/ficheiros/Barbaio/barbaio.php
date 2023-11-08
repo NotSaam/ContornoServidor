@@ -1,59 +1,63 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Ficheiros</title>
 </head>
+
 <body>
     <h1>Bar Baio</h1>
 
-    <form method="POST" action="">
+    <form method="POST" action="datosBar.php">
         <label for="nome">Nome:*</label>
         <input type="text" name="nome" id="nome" required><br>
 
         <br>
-        <label for="mail">Mail:</label>
-        <input type="text" name="mail" id="mail" >
+        <label for="email">Mail:</label>
+        <input type="text" name="email" id="email">
 
-        <input type="submit" value= "Enviar">
-        <input type="reset" value= "Borrar">
+        <input type="submit" value="Enviar">
+        <input type="reset" value="Borrar">
         <br>
 
         <br>
-        <label for="mail">Mensaxe:</label><br>
-        <textarea name="textarea" rows="10" cols="50"></textarea>
+        <label for="mensagem">Mensaxe:</label><br>
+        <textarea name="mensagem" rows="10" cols="50"></textarea>
     </form>
 
     <br>
-    <hr size ="3px" color="black" />
+    <hr size="3px" color="black" />
     <h3>Mensaxes deixados polos usuarios</h3>
-    <hr size ="3px" color="black" />
+    <hr size="3px" color="black" />
 
     <?php
-    if (file_exists("datosBar.txt")){
-        $nombre_ficheiro= "datosbar.txt";
-        
-        $ficheiro = fopen ($nombre_ficheiro, "r");
-        
-        $contenido = fred($file,filesize($file));
+    if (file_exists("datosBar.txt")) {
+        $nombre_ficheiro = "datosBar.txt";
 
-        fclose($ficheiro);
+        if ($ficheiro = fopen($nombre_ficheiro, "r")) {
+            $contenido = fread($ficheiro, filesize($nombre_ficheiro));
+            fclose($ficheiro);
 
-        $lineas =explode("-",$contenido);
-        krsort($lineas);
+            if (strlen($contenido) > 0) {
+                $lineas = explode("\n", $contenido);
+                echo "<table>";
 
-        echo "<table>";
-
-        foreach ($lineas as $linea){
-            echo  "<tr>";
-            echo  "<td>. $linea.</td>";
-            echo  "<tr>";
+                foreach ($lineas as $linea) {
+                    echo  "<tr>";
+                    echo  "<td>$linea</td>";
+                    echo  "<tr>";
+                }
+                echo "</table>";
+            } else {
+                echo "No hay reseñas todavía.";
+            }
+        } else {
+            echo "No se pudo abrir el archivo.";
         }
-
-        echo "</table>";
+    } else {
+        echo "Todavía no hay reseñas.";
     }
-    
-    
     ?>
-
 </body>
+
 </html>

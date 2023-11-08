@@ -1,29 +1,25 @@
-<!DOCTYPE html>
-<html lang="es">
-    <head>
-        <meta charset="utf-8"/>
-        <title>Titulo da página</title>
-    </head>
-    <body>
-    <?php
+<?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $nombre = $_POST["nombre"];
+    $nombre = $_POST["nome"];
     $email = $_POST["email"];
-    $mensaje = $_POST["mensaje"];
+    $mensaje = $_POST["mensagem"];
+    $hora_envio = date("Y-m-d H:i:s");
+    $separador = "<hr>";
 
-    $mensajeCompleto = "Nombre: $nombre\nEmail: $email\nMensaje: $mensaje\n\n";
+    $mensajeCompleto = "Nome: $nombre\nMail: $email\nMensaxe: $mensaje\nHora: $hora_envio\n$separador\n";
 
-    $archivo = fopen("mensajes.txt", "a");
+    $archivo = fopen("datosBar.txt", "a");
 
     if ($archivo) {
-        fwrite($archivo, $mensajeCompleto);
-        fclose($archivo);
-        echo "Mensaje enviado correctamente. Gracias por tu comentario.";
+        if (fwrite($archivo, $mensajeCompleto)) {
+            fclose($archivo);
+            echo "Mensaxe enviado correctamente. Grazas polo teu comentario.<br>";
+            echo "<a href='barbaio.php'>Volver</a>";
+        } else {
+            echo "Non se puido gardar o mensaxe.";
+        }
     } else {
-        echo "No se pudo almacenar el mensaje.";
+        echo "Non se puido abrir o arquivo.";
     }
 }
 ?>
-
-</body>
-</html>

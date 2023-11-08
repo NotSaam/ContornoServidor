@@ -15,3 +15,5 @@
             echo "A suma dos 2 numeros e: $suma";
         
         ?>
+        </body>
+    </html>

@@ -1,14 +1,24 @@
-<!DOCTYPE html>
-<html lang="es">
-    <head>
-        <meta charset="utf-8"/>
-        <title>Rexistro Notas</title>
-    </head>
-    <body>
-        <h4>Rexistro Notas</h4>
+<?php
+    if($_SERVER["REQUEST_METHOD"]== "POST"){
+        $dni = $_POST["dni"];
+        $nota = $_POST["nota"];
+        $separador = "<hr>";
         
-        <?php
+        
+        $mensajeImprimir = "DNI: $dni - Nota: $nota";
+        
+        $archivo = fopen ("datosNotas.txt", "a");
 
-        ?>
-        </body>
-    </html>
+        if($archivo){
+            if(fwrite($archivo,$mensajeImprimir)){
+                fclose(($archivo));
+                echo "Os datos gardaronse correctamente";
+                echo "<a href='barbaio.php'>Volver</a>";
+            } else{
+                echo "Non hay DNI";
+            }
+        }else{
+            echo "Non se pudo abrir o archivo";
+        }
+    }
+?>

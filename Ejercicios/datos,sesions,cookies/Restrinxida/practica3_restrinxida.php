@@ -1,14 +1,14 @@
 <?php
 session_start();
-    if (isset($_SESSION['usuario']) && isset($_SESSION['hash'])){
-        $usuario=$_SESSION['usuario'];
-        $hash=$_SESSION['hash'];
-    echo "<h1>Entraches na zona restrinxida</h1>";
 
-    } else {
-        header("Location: practica3_autentificacion.php");
-    }
-?>
+if (isset($_SESSION['user']) && isset($_SESSION['password'])) {
+    $user = $_SESSION['user'];
+    $password = $_SESSION['password'];
+    echo "<h1>Entraste en la zona restringida</h1>";
+} else {
+    header("Location: practica3_autentificacion.php");
+    exit();
+}
 ?>
 
 <!DOCTYPE html>
@@ -16,7 +16,7 @@ session_start();
 
 <head>
     <meta charset="utf-8" />
-    <title>Titulo</title>
+    <title>Página Restringida</title>
     
     <style>
         body {
@@ -29,11 +29,10 @@ session_start();
             margin: 40px;
             color: #fca84f;
         }
-
-        </style>
+    </style>
 </head>
 
 <body>
-    <h1>Paxina restrinxida</h1>
+    <h1>Página Restringida</h1>
 </body>
 </html>

@@ -1,16 +1,18 @@
 <?php
 session_start();
 
-if(isset($_SESSION["user"])  && isset($_SESSION["password"]) ){
-    $user=$_SESSION["user"];
-    $password=$_SESSION["password"];
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $user = $_POST["user"];
+    $password = $_POST["password"];
     
-    if($user == "admin" || $password == "123456"){
+    if ($user == "admin" && $password == "123456") {
         $_SESSION["user"] = $user;
-        $_SESSION["hash"]=password_hash($password,PASSWORD_DEFAULT);
-        header("Location:practica3_restrinxida.php");
-    }else
-    echo "<h1>Datos Erroneos<h1>";
+        $_SESSION["password"] = "123456";
+        header("Location: practica3_restrinxida.php");
+        exit();
+    } else {
+        echo "<h1>Datos Erroneos</h1>";
+    }
 }
 ?>
 
@@ -19,7 +21,7 @@ if(isset($_SESSION["user"])  && isset($_SESSION["password"]) ){
 
 <head>
     <meta charset="utf-8" />
-    <title>Titulo</title>
+    <title>Formulario de Inicio de Sesión</title>
     
     <style>
         body {
@@ -68,7 +70,7 @@ if(isset($_SESSION["user"])  && isset($_SESSION["password"]) ){
             border-radius: 3px;
             cursor: pointer;
         }
-
+        
         button:hover {
             background-color: gainsboro;
             color: black;
@@ -77,12 +79,12 @@ if(isset($_SESSION["user"])  && isset($_SESSION["password"]) ){
 </head>
 
 <body>
-    <h1>FORMULARIO DE INICO DE SESION</h1>
+    <h1>FORMULARIO DE INICIO DE SESIÓN</h1>
     <form action='practica3_autentificacion.php' method="POST">
         <label for='user'>Nombre de usuario:</label>
         <input type='text' id='user' placeholder='Introduce un usuario' name='user'>
 
-        <label for='password'>Contraseña</label>
+        <label for='password'>Contraseña:</label>
         <input type='password' id='password' placeholder='Introduce tu contraseña' name='password'>
 
         <button type='submit'>Comprobar</button>

@@ -1,5 +1,33 @@
 <?php
-
-
-
+$lista = array(
+    "Gato",
+    "Casa",
+    "Sol",
+    "Flor",
+    "Árbol",
+    "Juego",
+    "Pelota",
+    "Niño",
+    "Luna",
+    "Mar",
+    "Cielo",
+    "Mesa",
+    "Silla",
+    "Libro",
+    "Computadora",
+    "Agua",
+    "Ojo",
+    "Nariz",
+    "Mano",
+    "Pie",
+    "Camino",
+    "Coche",
+    "Tren",
+    "Pájaro",
+    "Nube",
+    "Reloj",
+    "Número",
+    "Color",
+    "Amigo"
+);
 ?>

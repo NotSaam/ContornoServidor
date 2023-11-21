@@ -1,3 +1,28 @@
+<?php
+    $listatarefas= array();
+
+    if(isset($_COOKIE["listatarefas"])){
+        $listatarefas = unserialize($_COOKIE["listatarefas"]);
+    }
+
+    if(isset($_POST["tarefa"])&& strlen( trim ($_POST["tarefa"]))>0){
+        $tarefa =$_POST["tarefa"];
+        array_push($listatarefas,$tarefa);
+        
+        setcookie("listatarefas",serialize($listatarefas));
+        $_COOKIE["listatarefas"]=serialize($listatarefas);
+    }
+
+    if (isset($_GET["borrar"])){
+        $idTarefa = $_GET["borrar"];
+        array_splice($listatarefas, $idTarefa, 1);
+    
+        setcookie("listatarefas", serialize($listatarefas));
+        $_COOKIE["listatarefas"]=serialize($listatarefas);
+    }
+?>
+
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -14,12 +39,15 @@
             height: 60vh;
             margin: 0;
             background-color: #2d2b2b;
-            color: black; 
+            color: white; 
+        }
+
+        .engadir{
+            color: black;
         }
 
         h1 {
             text-align: center;
-            margin-bottom: 10%;
             color: #fca84f;
         }
 
@@ -35,6 +63,7 @@
         label {
             display: block;
             margin-bottom: 8px;
+            color: black;
         }
 
         input {
@@ -62,8 +91,8 @@
 
 <body>
     <h1>LISTA DE TAREFAS</h1>
-    <form action='tarefa_lista.php' method="POST">
-        <label for='tarefa'>Engadir tarefa: </label>
+    <form action='tarefa_index.php' method="POST">
+        <label for='tarefa' id="engadir"><b>Engadir tarefa:</b></label>
         <input type='text' id='tarefa' placeholder='Introduce unha tarefa a engadir' name='tarefa'>
 
         <button type='submit'>Engadir</button>
@@ -71,9 +100,11 @@
 </body>
 </html>
 
-    <?php
-        include "tarefa_comprobar.php";
-        if(haiCookie()){
-            header("location:tarefa_lista.php");
-        }
+<?php
+if(count($listatarefas)>0){
+    echo "<h1>Lista de tarefas</h1>";
+    echo "<ol>";
+    foreach($listatarefas as $idTarefa => $tarefa)
+    echo " <li>$tarefa <a href='tarefa_index.php?borrar=$idTarefa'>Borrar</a></li>";
+}
 ?>

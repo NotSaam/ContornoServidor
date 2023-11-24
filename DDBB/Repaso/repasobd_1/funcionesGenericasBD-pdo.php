@@ -22,12 +22,12 @@
 			
 			//creamos la tablas
 			$creartabla="CREATE TABLE mitabla(
-			 id MEDIUMINT NOT NULL AUTO_INCREMENT,
-			 nombre CHAR(30) NOT NULL,
-			 edad INTEGER(30),
-			 salario INTEGER(30),
-			 PRIMARY KEY (id) )";
-			 
+			id MEDIUMINT NOT NULL AUTO_INCREMENT,
+			nombre CHAR(30) NOT NULL,
+			edad INTEGER(30),
+			salario INTEGER(30),
+			PRIMARY KEY (id) )";
+			
 			$stmt=$conn->prepare($creartabla);
 			$stmt->execute();
 			

@@ -12,6 +12,7 @@ try {
 		print "Nombre : " . $usu['nombre'];
 		print " Clave : " . $usu['clave'] . "<br>";
 	}
+	
 	/* consulta preparada, parametros por orden */	
 	$preparada = $bd->prepare("select nombre from usuarios where rol = ?");	
 	$preparada->execute( array(0));
@@ -19,6 +20,7 @@ try {
 	foreach ($preparada as $usu) {
 		print "Nombre : " . $usu['nombre'] . "<br>";
 	}
+	
 	/* consulta preparada, parametros por nombre */	
 	$preparada_nombre = $bd->prepare("select nombre from usuarios where rol = :rol");
 	$preparada_nombre->execute( array(':rol' => 0));

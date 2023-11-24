@@ -1,0 +1,11 @@
+exemplos utilizando PDO para a conexion.
+bc_conect.php exemplo de conexion a base de datos empresa
+bd_insert_update..... exemplos de insertar datos e borrar e actualizar
+bd_listar_usuario.... exemplo de como listar datos
+bd_transaccion..... Exemplo básico de transaccions.
+é preciso crear primeiro a base de datos, co ficherio basedatosempresa.sql
+No fonte: funcionesGenericasDB-pdo temos diversas funcións que se poden
+utilizar para traballar contra bases de datos utilizando a sintaxis PDO
+no fonte funcionesGenericasDB temos exemplos de como traballar contra bases de datos
+utilizando mysqli.
+en proba, hai algun exemplo de chamadas a funcions anterioes.

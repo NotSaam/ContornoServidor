@@ -3,80 +3,52 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Lista de tarefas</title>
+    <title>España</title>
+    <link rel="stylesheet" href="../css/style.css">
 
-    <style>
-        body {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 60vh;
-            margin: 0;
-            background-color: #2d2b2b;
-            color: white; 
-        }
-
-        .engadir{
-            color: black;
-        }
-
-        h1 {
-            text-align: center;
-            color: #fca84f;
-        }
-
-        form {
-            width: 300px;
-            padding: 20px;
-            border: 1px solid #fca84f;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            background-color: #fca84f;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 8px;
-            color: black;
-        }
-
-        input {
-            width: 100%;
-            padding: 8px;
-            margin-bottom: 12px;
-            box-sizing: border-box;
-        }
-
-        button {
-            background-color: black;
-            color: #fff;
-            padding: 10px 15px;
-            border: none;
-            border-radius: 3px;
-            cursor: pointer;
-        }
-        
-        button:hover {
-            background-color: gainsboro;
-            color: black;
-        }
-    </style>
 </head>
 
 <body>
-    <h1></h1>
 
-    <form action="#">
+    <form action="localidad.php">
     <label for='busqueda' id="busqueda"><b>Elija la provincia deseada:</b></label>
-    <select name="provincias" id="provincias">
-        <option value=""></option>
-    </select>
-    <button type='submit'>Buscar provincia</button>
-</form>
+    <select name="provincia" id="provincia">
 
     <?php
 
+    if(isset($_GET["comunidad"])==false){
+        header("Location:comunidad.php");
+    }
+    $comunidad=$_GET["comunidad"];
+
+    $servername="localhost";
+    $username="root";
+    $password="";
+    $database="geografia";
+    
+    $conn = new mysqli($servername,$username,$password,$database);
+    
+    if($conn -> connect_error){
+        die("Connection failed: " . $conn->connect_error);
+    }    
+    
+    $query = "SELECT p.nombre provincia , c.nombre comunidad ". 
+        "from provincias p " . 
+        "join comunidades c USING (id_comunidad) ". 
+        "where c.nombre= '$comunidad'". 
+        "order by p.nombre ";
+    $result = $conn->query($query);
+    
+    while ($row = $result->fetch_assoc()) {
+        echo "<option value='" . $row['provincia'] . "'>" . $row['provincia'] . "</option>";
+    }
+    
+    $conn->close();
     ?>
-</body>
+
+    </select>
+    <button type='submit'>Buscar provincia</button>
+    </form>
+        
+    </body>
 </html>

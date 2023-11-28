@@ -47,9 +47,14 @@ button {
     border: none;
     border-radius: 3px;
     cursor: pointer;
+    margin-top:  10px;
 }
 
 button:hover {
     background-color: gainsboro;
     color: black;
+}
+
+.resultado{
+    color:black;
 }

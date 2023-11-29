@@ -10,7 +10,7 @@
 
 <body>
 
-    <form action="localidad.php">
+    <form action="busqueda.php">
     <label for='provincia' id="provincia"><b>Escribe el nombre de la provincia:</b></label>
     <input type="text">
     <button type="submit">Buscar</button>

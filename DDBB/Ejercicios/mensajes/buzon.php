@@ -1,9 +1,9 @@
 <?php
 session_start();
-include "practica3-errores.php";
+include "errores.php";
 if(isset($_SESSION["usuario"])==false)
     //si no hay sesion de usuario vamos al formulario
-    header("Location:practica3-index.php");
+    header("Location:index.php");
 else
     //buscamos a ver si ese usuario existe
     $usuario=$_SESSION["usuario"];
@@ -26,17 +26,17 @@ if ($mysqli) {
         }
     }
     else
-        header("Location:login.php.php?error=".ERROR_CONEXION);
+        header("Location:index-practica3.php?error=".ERROR_CONEXION);
 }
 else
-    header("Location:login.php?error=".ERROR_CONEXION);
+    header("Location:index-practica3.php?error=".ERROR_CONEXION);
 ?>
 <!doctype html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <title>Buzón de mensajes</title>
-    <link rel="stylesheet" href="practica3-estilos.css"/>
+    <link rel="stylesheet" href="estilos.css"/>
 </head>
 <body>
 <h1>Hola <?=$usuario?></h1>
@@ -68,13 +68,13 @@ else
 </div>
 <div id="dcha">
     <h2>Nuevo mensaje</h2>
-    <form action="practica3-enviar.php" method="POST">
+    <form action="enviar.php" method="POST">
         <input type="text" name="destinatario" maxlength="30"
-            placeholder="Destinatario" required><br>
+               placeholder="Destinatario" required><br>
         <!--de manera oculta pasamos el id_usuario como remite del mensaje-->
         <input type="hidden" name="id_remite" value="<?=$id_usuario?>"/>
         <textarea name="texto" id="texto" cols="30" rows="10"
-                placeholder="Texto del mensaje"></textarea><br/>
+                  placeholder="Texto del mensaje"></textarea><br/>
         <button>Enviar mensaje</button>
     </form>
 </div>
@@ -88,7 +88,7 @@ else
     ?>
 </div>
 <div id="cerrar">
-    <p><a href="practica3-cerrar.php">Cerrar sesión</a></p>
+    <p><a href="cerrar.php">Cerrar sesión</a></p>
 </div>
 </body>
 </html>

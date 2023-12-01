@@ -70,11 +70,11 @@ else
     <h2>Nuevo mensaje</h2>
     <form action="enviar.php" method="POST">
         <input type="text" name="destinatario" maxlength="30"
-               placeholder="Destinatario" required><br>
+            placeholder="Destinatario" required><br>
         <!--de manera oculta pasamos el id_usuario como remite del mensaje-->
         <input type="hidden" name="id_remite" value="<?=$id_usuario?>"/>
         <textarea name="texto" id="texto" cols="30" rows="10"
-                  placeholder="Texto del mensaje"></textarea><br/>
+            placeholder="Texto del mensaje"></textarea><br/>
         <button>Enviar mensaje</button>
     </form>
 </div>

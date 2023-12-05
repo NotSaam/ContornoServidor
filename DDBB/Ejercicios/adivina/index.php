@@ -13,16 +13,18 @@ if ($conn->connect_error) {
     die("Error de conexión a la base de datos: " . $conn->connect_error);
 }
 
-// Obtener una localidad aleatoria de la base de datos
-$sql = "SELECT nombre FROM localidades ORDER BY RAND() LIMIT 1";
+// Localidad aleatoria de la base de datos
+$sql = "SELECT nombre, id_localidad FROM localidades ORDER BY RAND() LIMIT 1";
 $result = $conn->query($sql);
 
+//Nombre de provincias
 $sql_provincias = "SELECT nombre FROM provincias";
 $result_provincias = $conn->query($sql_provincias);
 
 if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
     $localidad = $row["nombre"];
+    $id_localidad = $row["id_localidad"];
 } else {
     die("No se encontraron localidades en la base de datos.");
 }
@@ -37,7 +39,6 @@ if ($result->num_rows > 0) {
 </head>
 <body>
 	<h1>Adivina la provincia</h1>
-    <br>
     <p>Localidad:  <strong><?php  echo $localidad ?> </p></strong>
 
     <?php 
@@ -47,8 +48,12 @@ if ($result->num_rows > 0) {
             echo "<option value=" .  $row["nombre"] .">" . $row["nombre"] . "</option>";
         }
         echo "</select>";
-    }?>
+    }
+    ?>
+
     <input type="submit" value="Comprobar" >
+
+    <!-- Añadir varible de aciertos y fallos -->
 
 </body>
 </html>

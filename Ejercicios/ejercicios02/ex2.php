@@ -49,16 +49,16 @@
     print_r($equipos);
     print "</pre>\n";
 
-    //Ordenar equipos alfabéticamente
+/*     //Ordenar equipos alfabéticamente
     ksort($equipos);
-
+ */
     //Imprime equipos ordenados
-    print "<br>";
+/*     print "<br>";
     print "<p>Array ordenado de mayor a menor alfabéticamente</p>";
     print "<pre>";
     print_r($equipos);
     print "</pre>\n";
-
+ */
     //Devolve o array enumerado
     $clasificacion=array_keys($equipos);
 
@@ -74,24 +74,23 @@
             <option value="<?php echo $nombre ?>"><?php echo $nombre ?></option>
             <?php } ?>
         </select>
-        
+
         <button>Buscar</button>
     </form>
-    
+
     <?php
-    if(isset($_POST["equipo"])){
-        $equipos=$_POST["equipo"];
-        
-        if(isset($equipos[$nombre])){
-            $puntos=$equipos[$nombre];
-            $posicion=array_search($nombre,$clasificacion)+1;
-            echo "<p>El $equipos tiene $puntos, ". " ahora mismo es el $posicion" . "º en la clasificacion de La Liga.</p>";
-        }    
-        else{
-            echo "<p>Equipo inexistente</p>";
-        }
+if (isset($_POST["equipo"])) {
+    $equipoSeleccionado = $_POST["equipo"];
+
+    if (isset($equipos[$equipoSeleccionado])) {
+        $puntos = $equipos[$equipoSeleccionado];
+        $posicion = array_search($equipoSeleccionado, $clasificacion) + 1;
+        echo "<p>El equipo $equipoSeleccionado tiene $puntos puntos y está en la posición $posicion en la clasificación de La Liga.</p>";
+    } else {
+        echo "<p>Equipo inexistente</p>";
+    }
 }
-        ?>
+?>
 
 </body>
 

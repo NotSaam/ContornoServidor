@@ -3,9 +3,6 @@
 <head>
     <title>Exercicio 5</title>
 </head>
-
-
-
 <body>
 
     <?php
@@ -28,7 +25,7 @@
         isset($_POST["nome"]) &&  isset($_POST["apellido1"]) && isset($_POST["apellido2"]) && isset($_POST["user"])
         && isset($_POST["dni"]) && isset($_POST["tlf"])
     ) {
-        
+
         if (preg_match("/^[$comprobarName\- ]+$/" , $nom) == false) {
             echo "<p> class='error'>Nombre no válido</p>";
             $todoBien = false;
@@ -43,13 +40,10 @@
             echo "<p> class='error'>Segundo apellido no válido</p>";
             $todoBien = false;
         }
-        
-        
 
     }
 
     ?>
 
 </body>
-
 </html>

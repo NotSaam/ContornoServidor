@@ -17,9 +17,8 @@
         $suma += $i;
     }
     echo "Tu numero es " . $num . " y la suma es " .  $suma;
-   
+
    ?>
 
 </body>
-
 </html>

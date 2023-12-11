@@ -1,0 +1,10 @@
+hai que crear unha base de datos igual a da practica 3
+e engadirlle nela o campo
+ALTER TABLE mensajes ADD nuevo BOOLEAN DEFAULT TRUE;
+
+¡¡ ollo, nestes códigos a base de datos chamaselle mensajes_actualizado.
+
+Por outa banda, tamen se pode actualizar o código para que traballer
+coa base de datos que creastes no exercicio 3, pero tende en conta
+que se nesa base de datos engadides o campo nuevo para xestionar 
+os mensaxes novos e os vellos,deixaría de funcionar o código da practica 3.

@@ -9,7 +9,7 @@ if (!is_array($existenDatos)) {
 <html>
 
 <head>
-    <title></title>
+    <title>Carrito</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -17,7 +17,7 @@ if (!is_array($existenDatos)) {
 
 <body>
     <div class='container'>
-        <h1 class='text-center'></h1>
+        <h1 class='text-center'>Compras de Departamento</h1>
         <div class="row">
             <table class='table table-bordered table-striped'>
                 <tr>
@@ -58,7 +58,5 @@ if (!is_array($existenDatos)) {
         </div>
     </div>
 </body>
-
-
 
 </html>

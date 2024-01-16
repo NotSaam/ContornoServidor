@@ -86,13 +86,14 @@ CREATE TABLE IF NOT EXISTS `productos` (
   `Peso` float NOT NULL,
   `Stock` int(11) NOT NULL,
   `CodCat` int(11) NOT NULL,
+  `Estado` boolean NOT NULL,
   PRIMARY KEY (`CodProd`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 -- Volcando datos para la tabla laboratorio.productos: ~6 rows (aproximadamente)
 /*!40000 ALTER TABLE `productos` DISABLE KEYS */;
 INSERT INTO `productos` (`CodProd`, `Nombre`, `Descripcion`, `Peso`, `Stock`, `CodCat`,`Estado`) VALUES
-	(1, 'Harina', '8 paquetes de 1kg de harina cada uno', 8, 100, 1,'Activo'),
+	(1, 'Harina', '8 paquetes de 1kg de harina cada uno', 8, 100, 1,true),
 	(2, '', '', , , ,''),
 	(3, '', '', , , ,''),
 	(4, '', '', , , ,''),

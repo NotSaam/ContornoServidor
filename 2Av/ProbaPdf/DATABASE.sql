@@ -14,6 +14,5 @@ CREATE TABLE IF NOT EXISTS transacciones (
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 
-INSERT INTO ransacciones (id, transaccion_cod, nombres, tipo_pago, estado_transaccion, email) 
+INSERT INTO transacciones (id, transaccion_cod, nombres, tipo_pago, estado_transaccion, email) 
 VALUES 	(1, '10001', 'Jose Flores', 'Tarjeta', 'Activo', 'jose@gmail.com');
-

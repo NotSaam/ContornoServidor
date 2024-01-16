@@ -1,0 +1,18 @@
+{
+    "name": "vendor/probapdf",
+    "description": "prueba de pdfs",
+    "type": "project",
+    "require": {
+        "dompdf/dompdf": "^2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Vendor\\Probapdf\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Sam"
+        }
+    ]
+}

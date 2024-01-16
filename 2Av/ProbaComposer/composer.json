@@ -1,0 +1,18 @@
+{
+    "name": "vendor/probas",
+    "type": "project",
+    "require": {
+        "phpmailer/phpmailer": "^6.9",
+        "dompdf/dompdf": "^2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Vendor\\Probas\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Sam"
+        }
+    ]
+}

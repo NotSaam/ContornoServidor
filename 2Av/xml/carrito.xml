@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<cesta>
+    <producto>
+        <item>Allos</item>
+        <cantidad>10</cantidad>
+    </producto>
+   <producto>
+        <item>Pasta</item>
+        <cantidad>3</cantidad>
+    </producto>
+</cesta>

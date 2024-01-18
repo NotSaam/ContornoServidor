@@ -29,9 +29,11 @@ CREATE TABLE IF NOT EXISTS `categorias` (
 -- Volcando datos para la tabla laboratorio.categorias: ~3 rows (aproximadamente)
 /*!40000 ALTER TABLE `categorias` DISABLE KEYS */;
 INSERT INTO `categorias` (`CodCat`, `Nombre`, `Descripcion`) VALUES
-	(1,'', ''),
-	(2, '', ''),
-	(3, '', '');
+	(1,'ProtImpl', 'Protesis sobre implantes' ),
+	(2, 'ProtFija', 'Prótesis fija ' ),
+	(3, 'Compost', 'Composturas' );
+	(4, 'ProtRemov', 'Prótesis Removibles' );
+	(5, 'FerMich', 'Férulas tipo Michigan' );
 /*!40000 ALTER TABLE `categorias` ENABLE KEYS */;
 
 -- Volcando estructura para tabla laboratorio.pedidos
@@ -39,15 +41,15 @@ CREATE TABLE IF NOT EXISTS `pedidos` (
   `CodPed` int(11) NOT NULL AUTO_INCREMENT,
   `Fecha` datetime NOT NULL,
   `Enviado` int(11) NOT NULL,
-  `Clinica` int(11) NOT NULL,
+  `CodUser` int(11) NOT NULL,
   PRIMARY KEY (`CodPed`),
-  KEY `Clinica` (`Clinica`),
-  CONSTRAINT `pedidos_ibfk_1` FOREIGN KEY (`Clinica`) REFERENCES `Clinica` (`CodClin`)
+  KEY `usuarios` (`usuarios`),
+  CONSTRAINT `pedidos_ibfk_1` FOREIGN KEY (`usuarios`) REFERENCES `usuarios` (`CodUser`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 -- Volcando datos para la tabla pedidos.pedidos: ~3 rows (aproximadamente)
 /*!40000 ALTER TABLE `pedidos` DISABLE KEYS */;
-INSERT INTO `pedidos` (`CodPed`, `Fecha`, `Enviado`, `Clinica`) VALUES
+INSERT INTO `pedidos` (`CodPed`, `Fecha`, `Enviado`, `CodUser`) VALUES
 	(3, '2022-11-27 19:23:14', 0, 2),
 	(4, '2022-11-27 19:24:17', 0, 2),
 	(5, '2022-11-27 19:25:39', 0, 2);
@@ -104,26 +106,41 @@ INSERT INTO `productos` (`CodProd`, `Nombre`, `Descripcion`, `Peso`, `Stock`, `C
 
 -- Volcando estructura para tabla laboratorio.usuarios
 CREATE TABLE IF NOT EXISTS `usuarios` (
-  `CodUser` int(11) NOT NULL AUTO_INCREMENT,
+  `CodUser` int(11) NOT NULL,
   `Correo` varchar(90) NOT NULL,
   `Clave` varchar(45) NOT NULL,
   `Pais` varchar(45) NOT NULL,
   `CP` int(5) DEFAULT NULL,
   `Localidad` varchar(45) NOT NULL,
   `Direccion` varchar(200) NOT NULL,
-  `Rol`varchar(30) NOT NULL,
   PRIMARY KEY (`CodUser`),
   UNIQUE KEY `UN_RES_COR` (`Correo`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
--- Volcando datos para la tabla laboratorio.clinicas: ~2 rows (aproximadamente)
-/*!40000 ALTER TABLE `clinicas` DISABLE KEYS */;
-INSERT INTO `clinicas` (`CodRes`, `Correo`, `Clave`, `Pais`, `CP`, `Ciudad`, `Direccion`, `Rol`) VALUES
+-- Volcando datos para la tabla laboratorio.usuarios: ~2 rows (aproximadamente)
+/*!40000 ALTER TABLE `usuarioss` DISABLE KEYS */;
+INSERT INTO `usuarios` (`CodRes`, `Correo`, `Clave`, `Pais`, `CP`, `Ciudad`, `Direccion`, `Rol`) VALUES
 	(1, 'sam', '1234', 'España', 15150, 'Baio', 'Bispo Romero', 'admin'),
 	(2, '', '', '', , '', ' ');
-/*!40000 ALTER TABLE `clinicas` ENABLE KEYS */;
+/*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40111 SET SQL_NOTES=IFNULL(@OLD_SQL_NOTES, 1) */;
+
+-- Volcando estructura para tabla laboratorio.usuarios
+CREATE TABLE IF NOT EXISTS `rol` (
+  `CodRol` int(11) NOT NULL AUTO_INCREMENT,
+  `Descripcion` varchar(45) NOT NULL,
+  PRIMARY KEY (`CodRol`),
+  UNIQUE KEY `UN_RES_COR` (`Correo`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+-- Volcando datos para la tabla laboratorio.usuarios: ~2 rows (aproximadamente)
+/*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
+INSERT INTO `rol` (`CodRol`, `Tipo`,) VALUES
+	(1, 'sam', 'admin'),
+	(2, '', '', '', , '', ' ');
+
+

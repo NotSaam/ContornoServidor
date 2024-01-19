@@ -22,6 +22,7 @@ CREATE TABLE IF NOT EXISTS `categorias` (
   `CodCat` int(11) NOT NULL AUTO_INCREMENT,
   `Nombre` varchar(45) NOT NULL,
   `Descripcion` varchar(200) NOT NULL,
+  `Activa`
   PRIMARY KEY (`CodCat`),
   UNIQUE KEY `UN_NOM_CAT` (`Nombre`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
@@ -39,9 +40,10 @@ INSERT INTO `categorias` (`CodCat`, `Nombre`, `Descripcion`) VALUES
 -- Volcando estructura para tabla laboratorio.pedidos
 CREATE TABLE IF NOT EXISTS `pedidos` (
   `CodPed` int(11) NOT NULL AUTO_INCREMENT,
-  `Fecha` datetime NOT NULL,
-  `Enviado` int(11) NOT NULL,
   `CodUser` int(11) NOT NULL,
+  `Fecha` datetime NOT NULL,
+  `Precio_total` 
+  `Cod_Estado` int(11) NOT NULL,
   PRIMARY KEY (`CodPed`),
   KEY `usuarios` (`usuarios`),
   CONSTRAINT `pedidos_ibfk_1` FOREIGN KEY (`usuarios`) REFERENCES `usuarios` (`CodUser`)
@@ -61,6 +63,7 @@ CREATE TABLE IF NOT EXISTS `pedidosproductos` (
   `CodPed` int(11) NOT NULL,
   `CodProd` int(11) NOT NULL,
   `Unidades` int(11) NOT NULL,
+  `Precio` 
   PRIMARY KEY (`CodPredProd`),
   KEY `CodPed` (`CodPed`),
   KEY `CodProd` (`CodProd`),
@@ -88,7 +91,7 @@ CREATE TABLE IF NOT EXISTS `productos` (
   `Peso` float NOT NULL,
   `Stock` int(11) NOT NULL,
   `CodCat` int(11) NOT NULL,
-  `Estado` boolean NOT NULL,
+  `Activo` boolean NOT NULL,
   `Precio` float NOT NULL,
   PRIMARY KEY (`CodProd`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
@@ -124,9 +127,9 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `Correo` varchar(90) NOT NULL,
   `Clave` varchar(45) NOT NULL,
   `Pais` varchar(45) NOT NULL,
-  `CP` int(5) DEFAULT NULL,
   `Localidad` varchar(45) NOT NULL,
   `Direccion` varchar(200) NOT NULL,
+  `Cod_Rol`
   PRIMARY KEY (`CodUser`),
   UNIQUE KEY `UN_RES_COR` (`Correo`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
@@ -150,11 +153,26 @@ CREATE TABLE IF NOT EXISTS `rol` (
   PRIMARY KEY (`CodRol`),
   UNIQUE KEY `UN_RES_COR` (`Correo`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
-
--- Volcando datos para la tabla laboratorio.usuarios: ~2 rows (aproximadamente)
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
 INSERT INTO `rol` (`CodRol`, `Tipo`,) VALUES
 	(1, 'sam', 'admin'),
 	(2, '', '', '', , '', ' ');
 
+-- Volcando datos para la tabla laboratorio.usuarios: ~2 rows (aproximadamente)
 
+
+/* Para saber el estado de un pedido */
+CREATE TABLE IF NOT EXISTS `estado` (
+  `Cod_Estado` int(11) NOT NULL AUTO_INCREMENT,
+  `Descripcion` varchar(45) NOT NULL,
+  PRIMARY KEY (`Cod_Estado`),
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+
+
+/* tener constancia de historial de movimientos de toda la base de datos */ 
+  CREATE TABLE IF NOT EXISTS `log` (
+  `Cod_User` int(11) NOT NULL AUTO_INCREMENT,
+  `Descripcion` varchar(45) NOT NULL,
+  PRIMARY KEY (`Cod_User`),
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;

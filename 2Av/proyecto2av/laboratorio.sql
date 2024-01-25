@@ -3,18 +3,19 @@ USE 'laboratorio';
 
 -- Tabla "categorias"
 CREATE TABLE categorias (
-    Cod_Cat INT PRIMARY KEY,
+    Cod_Categoria INT PRIMARY KEY,
     Nombre VARCHAR(255),
     Descripcion VARCHAR(255),
     Activa BOOLEAN
+    FOREIGN KEY (Cod_Estado) REFERENCES estado (Cod_Estado)
   );
 
-  INSERT INTO `categorias` (`Cod_Cat`, `Nombre`, `Descripcion`,`Activa`) VALUES
-  (1,'ProtImpl', 'Protesis sobre implantes',true),
-  (2,'ProtFija', 'Prótesis fija ',true),
-  (3,'Compost', 'Composturas' , true), 
-  (4,'ProtRemov', 'Prótesis Removibles',true),
-  (5,'FerMichi', 'Férulas tipo Michigan' ,true);
+  INSERT INTO `categorias` (`Cod_Categoria`, `Nombre`, `Descripcion`,`Cod_Estado`) VALUES
+  (1,'ProtImpl', 'Protesis sobre implantes',1),
+  (2,'ProtFija', 'Prótesis fija ',1),
+  (3,'Compost', 'Composturas' , 1), 
+  (4,'ProtRemov', 'Prótesis Removibles',1),
+  (5,'FerMichi', 'Férulas tipo Michigan' ,1);
 
 -- Tabla "productos"
 CREATE TABLE productos (
@@ -26,30 +27,30 @@ CREATE TABLE productos (
     Activo BOOLEAN,
     Costo DECIMAL(10, 2),
     Cod_Categoria INT,
-    FOREIGN KEY (Cod_Categoria) REFERENCES categorias(Cod_Cat)
+    FOREIGN KEY (Cod_Categoria) REFERENCES categorias(Cod_Categoria)
   );
 
-  INSERT INTO `productos` (`CodProd`, `Nombre`, `Peso`, `Stock`, `CodCat`,`Estado`, `Precio`) VALUES
-	(1, 'Corona individual', 8, 100, 1,true,15.4)
-	(2, 'Restauracion multiple atronillada y cementada',10 ,200 ,1 ,true,30),
-	(3, 'Hibridas en resina sobre estructura colada y fresada',25,100 ,1,true ,27),
-	(4, 'Restauraciones totales atornilladas de ceramica sobre metal',12 ,100 ,1,true,40),
-	(5, 'Restauraciones totales sobre base de oxido de zirconio fresado',48, 100,1,true,35),
-	(6, 'Protesis provisionales ',4 ,100 ,2 ,true,50.4);
-	(7, 'Coronas individuales definitivas en: gradia(composite ultima generacion)', 14,100 ,2 ,true,12);
-	(8, 'Coronas con base de óxido de zicornio y recubrimiento cerámico',9.23 ,100 ,2 ,true,24.15);
-	(9, 'Coronas ceramo-metálicas', 7.26,100 ,2 ,true,25);
-	(10, 'Coronas individuales en cerámica inyectada, de gran efecto estético', 5.67,100 ,2 ,true,20.5);
-	(11, 'Restauraciones múltiples: desde puentes de 2 piezas hasta rehabilitaciones de 14,tanto sobre estructuras de óxido de zirconio como cerámica sobre metal', 6,100 ,2 ,true,55);
-  (12,'Reparaciones de protesis acrilicas', , , , , ,)
-  (13,'Soldaduras de estructuras de cromo cobalto', , , , , ,)
-  (14,'Reposicion de piezas en protesis de resina y esqueleticas', , , , , ,)
-  (15,'Agregado de piezas y ganchos en todo tipo de protesis', , , , , ,)
-  (16,'Rebase de todo tipo de protesis', , , , , ,)
-  (17,'En resina (completa y parciales)', , , , , ,)
-  (18,'Con base metalica (esqueléticos con base de cromo-cobalto) ', , , , , ,)
-  (19,'Combinada: con ataches en combinacion con elementos fijos', , , , , ,)
-  (20,'En resina acrilica', , , , , ,)
+  INSERT INTO `productos` (`Cod_Producto`, `Nombre`, `Peso`, `Stock`, `Cod_Categoria`, `Precio`) VALUES
+	(1, 'Corona individual', 8, 100, 1,15.4)
+	(2, 'Restauracion multiple atronillada y cementada',10 ,200 ,1,30),
+	(3, 'Hibridas en resina sobre estructura colada y fresada',25,100 ,1,27),
+	(4, 'Restauraciones totales atornilladas de ceramica sobre metal',12 ,100 ,1,40),
+	(5, 'Restauraciones totales sobre base de oxido de zirconio fresado',48, 100,1,35),
+	(6, 'Protesis provisionales ',4 ,100 ,2 ,50.4);
+	(7, 'Coronas individuales definitivas en: gradia(composite ultima generacion)', 14,100 ,2 ,12);
+	(8, 'Coronas con base de óxido de zicornio y recubrimiento cerámico',9.23 ,100 ,2 ,24.15);
+	(9, 'Coronas ceramo-metálicas', 7.26,100 ,2 ,25);
+	(10, 'Coronas individuales en cerámica inyectada, de gran efecto estético', 5.67,100 ,2 ,20.5);
+	(11, 'Restauraciones múltiples: desde puentes de 2 piezas hasta rehabilitaciones de 14,tanto sobre estructuras de óxido de zirconio como cerámica sobre metal', 6,100 ,2 ,55);
+  (12,'Reparaciones de protesis acrilicas', 40.5, 200 ,3 ,60.4 ),
+  (13,'Soldaduras de estructuras de cromo cobalto', 80.2,200 ,3 ,100 ),
+  (14,'Reposicion de piezas en protesis de resina y esqueleticas', 35.6,150 ,3 ,30 ),
+  (15,'Agregado de piezas y ganchos en todo tipo de protesis',15.5 ,100 ,3 ,16 ),
+  (16,'Rebase de todo tipo de protesis', 25.6,320 ,3 ,25),
+  (17,'En resina (completa y parciales)',32.5 ,125 ,4 ,45),
+  (18,'Con base metalica (esqueléticos con base de cromo-cobalto) ',47.5 ,130,4,35),
+  (19,'Combinada: con ataches en combinacion con elementos fijos',35.5 ,125 ,5,25)
+  (20,'En resina acrilica',27.5 ,35 ,5 ,17.5)
 
 -- Tabla "rol"
 CREATE TABLE rol (
@@ -57,16 +58,18 @@ CREATE TABLE rol (
     Descrip VARCHAR(255)
   );
 
-  INSERT INTO `rol` (`CodRol`, `Descripcion`,) VALUES
+  INSERT INTO `rol` (`Cod_Rol`, `Descripcion`,) VALUES
 	(1,  'admin'),
-	(2, 'xefe');
-	(3, 'cliente');
+	(2, 'cliente');
 
 -- Tabla "estado"
 CREATE TABLE estado (
     Cod_Estado INT PRIMARY KEY,
     Tipo VARCHAR(255)
-  );  
+  ); 
+    INSERT INTO `estado` (`Cod_Estado`, `Descripcion`,) VALUES
+	(1,  'activa'),
+	(2, 'desactivada');
 
 -- Tabla "usuarios"
 CREATE TABLE usuarios (

@@ -74,7 +74,58 @@ font-family:Cambria ;
     transform-origin: left;
     transform: rotateZ(-45deg) translate(-5px, 5px);
   }
+    
+  .encabezado {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #000000;
+  }
   
-.encabezado{
-  background:black;
-}
+  .logo {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo img {
+    margin-right: 10px;
+  }
+  
+  .logo span {
+    color: #fff; 
+    font-size: 18px; 
+    text-align: center
+  }
+  
+  .hamburger {
+    order: -1;
+  }
+  
+  .checkbox {
+    display: none;
+  }
+  
+  .menu {
+    display: none;
+  }
+  
+  .checkbox:checked + .menu {
+    display: block;
+  }
+  
+  .menu {
+    position: absolute;
+    top: 60px; 
+    right: 10px;
+    background-color: #333;
+    padding: 10px;
+  }
+  
+  .menu a {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    margin-bottom: 10px;
+  }
+  

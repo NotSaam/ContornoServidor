@@ -37,6 +37,49 @@ font-family:Cambria ;
     padding: 10px;
     background-color: #000000;
   }
+
+
+  .left{
+    display: flex;
+    text-align: left;
+    width: 33.33%;
+  }
   
+
+  .center{
+display: flex;
+align-items: center;
+justify-content: center;
+width: 33.33%;
+  }
+
+  #logo{
+    width: 50px;
+  }
+
+
+
+.right{
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  width: 33.33%;
+  }
+
+  #inicioFoto{
+    width: 25px;
+    margin-right: 10px;
+  }
+
+#carrito{
+width: 25px;
+}
+
+.carrito{
+  width: 30px;
+}
+
+
+
  
   

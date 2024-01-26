@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -10,7 +14,7 @@
       <h1>LABORATORIO DENTES</h1>
     </a>
 
-    <form id="form">
+    <form id="form" action="">
       <h2>Inicio de sesion</h2>
       <div class="input-field">
         <label for="username">Usuario</label>

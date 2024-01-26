@@ -29,52 +29,7 @@ font-family:Cambria ;
     font-size: 45px;
   }
   
-  .hamburger {
-    height: 50px;
-    width: 50px;
-    transform: 0.2s;
-    position: relative;
-  }
-  .hamburger .checkbox {
-    position: absolute;
-    opacity: 0;
-    height: 100%;
-    width: 100%;
-    cursor: pointer;
-  }
-  .line {
-    transition: 0.5s;
-    stroke-width: 6px;
-    stroke: rgb(255, 255, 255);
-  }
-  .lineTop {
-    stroke-dasharray: 40 40;
-    stroke-dashoffset: 25;
-  }
-  .lineBottom {
-    stroke-dasharray: 40 40;
-    stroke-dashoffset: 60;
-  }
-  .lineMid {
-    stroke-dasharray: 40 40;
-  }
-  .hamburger .checkbox:checked + svg .line {
-    stroke: rgb(255, 255, 255);
-  }
-  .hamburger .checkbox:checked + svg .lineTop {
-    stroke-dashoffset: 0;
-    transform-origin: left;
-    transform: rotateZ(45deg) translate(-7px, -5px);
-  }
-  .hamburger .checkbox:checked + svg .lineMid {
-    stroke-dashoffset: 40;
-  }
-  .hamburger .checkbox:checked + svg .lineBottom {
-    stroke-dashoffset: 0;
-    transform-origin: left;
-    transform: rotateZ(-45deg) translate(-5px, 5px);
-  }
-    
+  
   .encabezado {
     display: flex;
     align-items: center;
@@ -83,49 +38,5 @@ font-family:Cambria ;
     background-color: #000000;
   }
   
-  .logo {
-    display: flex;
-    align-items: center;
-  }
-  
-  .logo img {
-    margin-right: 10px;
-  }
-  
-  .logo span {
-    color: #fff; 
-    font-size: 18px; 
-    text-align: center
-  }
-  
-  .hamburger {
-    order: -1;
-  }
-  
-  .checkbox {
-    display: none;
-  }
-  
-  .menu {
-    display: none;
-  }
-  
-  .checkbox:checked + .menu {
-    display: block;
-  }
-  
-  .menu {
-    position: absolute;
-    top: 60px; 
-    right: 10px;
-    background-color: #333;
-    padding: 10px;
-  }
-  
-  .menu a {
-    display: block;
-    color: #fff;
-    text-decoration: none;
-    margin-bottom: 10px;
-  }
+ 
   

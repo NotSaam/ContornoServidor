@@ -1,12 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" type="text/css" href="../css/login.css" />
+  <link rel="icon" type="image/jpg" href="../img/favicon.png" />
+  <title>Inicio de sesión | Laboratorio Dentes</title>
+</head>
+
+<body>
+  <a id="lab" href="../html/index.html">
+    <h1>LABORATORIO DENTES</h1>
+  </a>
+
+  <form id="form" action="login.php" method="post">
+    <h2>Inicio de sesión</h2>
+    <?php if (isset($error_message)) { ?>
+      <div class="error-message"><?php echo $error_message; ?></div>
+    <?php } ?>
+    <div class="input-field">
+      <label for="username">Usuario</label>
+      <input type="text" id="username" name="username" required />
+    </div>
+    <div class="input-field">
+      <label for="password">Contraseña</label>
+      <input type="password" id="password" name="password" required />
+    </div>
+    <div class="submit">
+      <input id="submitBoton" type="submit" value="Login" />
+    </div>
+  </form>
+</body>
+
+</html>
 <?php
 session_start();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-  $servername = "tu_servidor";
-  $username = "tu_usuario";
-  $password = "tu_contraseña";
-  $dbname = "tu_base_de_datos";
+  $servername = "127.0.0.1";
+  $username = "root";
+  $password = "";
+  $dbname = "laboratorio";
 
   $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -27,7 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $row = $result->fetch_assoc();
     $_SESSION["user_id"] = $row["id"];
     $_SESSION["username"] = $row["username"];
-    header("Location: index.php"); 
+    header("Location: index.php");
     exit();
   } else {
     $error_message = "Credenciales incorrectas. Inténtalo de nuevo.";
@@ -36,38 +70,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $conn->close();
 }
 ?>
-
-<!DOCTYPE html>
-<html>
-
-<head>
-  <link rel="stylesheet" type="text/css" href="../css/login.css" />
-  <link rel="icon" type="image/jpg" href="../img/favicon.png" />
-  <title>Inicio de sesión | Laboratorio Dentes</title>
-</head>
-
-<body>
-  <a id="lab" href="../html/index.html">
-    <h1>LABORATORIO DENTES</h1>
-  </a>
-
-  <form id="form" action="" method="post">
-    <h2>Inicio de sesión</h2>
-    <?php if (isset($error_message)) { ?>
-      <div class="error-message"><?php echo $error_message; ?></div>
-    <?php } ?>
-    <div class="input-field">
-      <label for="username">Usuario</label>
-      <input type="text" id="username" name="username" required />
-    </div>
-    <div class="input-field">
-      <label for="password">Contraseña</label>
-      <input type="password" id="password" name="password" required />
-    </div>
-    <div class="submit">
-      <input id="submitBoton" type="submit" value="Login" />
-    </div>
-  </form>
-</body>
-
-</html>

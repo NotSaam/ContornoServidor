@@ -1,9 +1,8 @@
 <?php
 session_start();
 
-// Verificar si el formulario se envió
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  // Conexión a la base de datos (reemplaza estos valores con los tuyos)
+
   $servername = "tu_servidor";
   $username = "tu_usuario";
   $password = "tu_contraseña";
@@ -24,19 +23,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $sql = "SELECT id, username FROM usuarios WHERE username = '$username' AND password = '$password'";
   $result = $conn->query($sql);
 
-  // Verificar si se encontraron resultados
   if ($result->num_rows > 0) {
-    // Iniciar sesión y redirigir a la página principal
     $row = $result->fetch_assoc();
     $_SESSION["user_id"] = $row["id"];
     $_SESSION["username"] = $row["username"];
-    header("Location: index.php"); // Cambia esto con la página a la que deseas redirigir
+    header("Location: index.php"); 
     exit();
   } else {
     $error_message = "Credenciales incorrectas. Inténtalo de nuevo.";
   }
 
-  // Cerrar la conexión a la base de datos
   $conn->close();
 }
 ?>

@@ -9,33 +9,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   $conn = new mysqli($servername, $username, $password, $dbname);
 
-  // Verificar la conexión
   if ($conn->connect_error) {
     die("Conexión fallida: " . $conn->connect_error);
   }
 
-  // Obtener datos del formulario
-  $correo = $_POST["username"]; // Cambié el nombre del campo a "correo"
-  $clave = $_POST["password"]; // Cambié el nombre del campo a "clave"
+  $correo = $_POST["username"]; 
+  $clave = $_POST["password"]; 
 
-  // Consulta SQL utilizando una consulta preparada
-  $sql = "SELECT Cod_User, Correo, Cod_Rol FROM usuarios WHERE Correo = ? AND Clave = ?";
+  $sql = "SELECT Cod_User, Correo, Cod_Rol FROM usuarios WHERE Correo = '$correo' AND Clave = '$password' ";
 
-  // Preparar la consulta
   $stmt = $conn->prepare($sql);
 
-  // Verificar si hay algún error en la preparación
   if ($stmt === false) {
     die("Error en la preparación de la consulta: " . $conn->error);
   }
 
-  // Vincular los parámetros
   $stmt->bind_param("ss", $correo, $clave);
 
-  // Ejecutar la consulta
   $stmt->execute();
 
-  // Obtener resultados de la consulta
   $stmt->store_result();
 
   if ($stmt->num_rows > 0) {
@@ -52,7 +44,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $error_message = "Credenciales incorrectas. Inténtalo de nuevo.";
   }
 
-  // Cerrar la consulta y la conexión
   $stmt->close();
   $conn->close();
 }

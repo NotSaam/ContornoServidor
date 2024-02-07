@@ -1,10 +1,6 @@
 <?php
 session_start();
 
-// Inicializa la variable de mensaje de error
-$error_message = "";
-
-// Verifica si se ha enviado el formulario
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $servername = "127.0.0.1";
   $username = "root";
@@ -20,31 +16,40 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $correo = $_POST["username"];
   $clave = $_POST["password"];
 
-  // Genera el hash de la contraseña
-  $hashed_password = password_hash($clave, PASSWORD_DEFAULT);
-
-  // Prepara la consulta para insertar un nuevo usuario
-  $sql = "INSERT INTO usuarios (Correo, Clave) VALUES (?, ?)";
+  $sql = "SELECT Cod_User, Correo, Clave, Cod_Rol FROM usuarios WHERE Correo = ?";
   $stmt = $conn->prepare($sql);
-  $stmt->bind_param("ss", $correo, $hashed_password);
 
-  // Ejecuta la consulta para insertar un nuevo usuario
+  if ($stmt === false) {
+    die("Error en la preparación de la consulta: " . $conn->error);
+  }
+
+  $stmt->bind_param("s", $correo);
   $stmt->execute();
+  $stmt->store_result();
 
-  // Verifica si se insertó el usuario correctamente
-  if ($stmt->affected_rows > 0) {
-    // Usuario insertado correctamente
-    $_SESSION["success_message"] = "Usuario registrado correctamente.";
+  if ($stmt->num_rows > 0) {
+    $stmt->bind_result($user_id, $user_correo, $stored_password, $user_rol);
+    $stmt->fetch();
+
+    // Verificar la contraseña
+    if ($clave === $stored_password) {
+      $_SESSION["user_id"] = $user_id;
+      $_SESSION["correo"] = $user_correo;
+      $_SESSION["rol"] = $user_rol;
+
+      header("Location: index.php");
+      exit();
+    } else {
+      $error_message = "Credenciales incorrectas. Inténtalo de nuevo.";
+    }
   } else {
-    // Error al insertar el usuario
-    $_SESSION["error_message"] = "Error al registrar el usuario.";
+    $error_message = "Credenciales incorrectas. Inténtalo de nuevo.";
   }
 
   $stmt->close();
   $conn->close();
 }
 ?>
-
 
 <!DOCTYPE html>
 <html>
@@ -62,8 +67,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   <form id="form" action="login.php" method="post">
     <h2>Inicio de sesión</h2>
-    <?php if (!empty($error_message)) { ?>
-      <!-- Muestra el mensaje de error solo si existe -->
+    <?php if (isset($error_message)) { ?>
       <div class="error-message"><?php echo $error_message; ?></div>
     <?php } ?>
     <div class="input-field">

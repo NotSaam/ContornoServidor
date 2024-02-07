@@ -4,7 +4,7 @@
 <head>
   <link rel="stylesheet" type="text/css" href="../css/index.css" />
   <link rel="icon" type="image/jpg" href="../img/favicon.png" />
-  <title>Categorias | Laboratorio Dentes</title>
+  <title>Inicio | Laboratorio Dentes</title>
 </head>
 
 <body>
@@ -18,6 +18,8 @@
           <a href="categorias.php">Categorías</a>
           <a href="productos.php">Productos</a>
           <a href="micuenta.php">Mi Cuenta</a>
+          <a></a>
+          <a href="cerrarSesion.php">Cerrar Sesion</a>
         </div>
       </div>
       <span onclick="openNav()"><img id="iconMen" src="../img/hambug.png"></span>
@@ -29,7 +31,7 @@
 
     <div class="right">
       <a href="login.php">
-        <img id="inicioFoto" src="../img/inicioSesion.png">
+        <img id="inicioFoto" src="../img/user-solid.svg">
       </a>
       <img id="carrito" src="../img/Carrito.png">
     </div>

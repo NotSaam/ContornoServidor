@@ -33,17 +33,24 @@
   justify-content: flex-end;
 }
 
-#inicioFoto,
-#carrito {
+#inicioFoto{
   width: 25px;
   margin-right: 10px;
   cursor: pointer;
+}
 
+
+#carrito {
+  width: 30px;
+  margin-right: 20px;
+  margin-left: 20px;
+  cursor: pointer;
 }
 
 #iconMen {
   width: 30px;
   cursor: pointer;
+  margin-left:20px ;
 }
 
 /* Menú Overlay */

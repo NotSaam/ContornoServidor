@@ -1,6 +1,10 @@
 <?php
 session_start();
 
+// Inicializa la variable de mensaje de error
+$error_message = "";
+
+// Verifica si se ha enviado el formulario
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $servername = "127.0.0.1";
   $username = "root";
@@ -13,35 +17,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     die("Conexión fallida: " . $conn->connect_error);
   }
 
-  $correo = $_POST["username"]; 
-  $clave = $_POST["password"]; 
+  $correo = $_POST["username"];
+  $clave = $_POST["password"];
 
-  $sql = "SELECT Cod_User, Correo, Cod_Rol FROM usuarios WHERE Correo = '$correo' AND Clave = '$password' ";
+  // Genera el hash de la contraseña
+  $hashed_password = password_hash($clave, PASSWORD_DEFAULT);
 
+  // Prepara la consulta para insertar un nuevo usuario
+  $sql = "INSERT INTO usuarios (Correo, Clave) VALUES (?, ?)";
   $stmt = $conn->prepare($sql);
+  $stmt->bind_param("ss", $correo, $hashed_password);
 
-  if ($stmt === false) {
-    die("Error en la preparación de la consulta: " . $conn->error);
-  }
-
-  $stmt->bind_param("ss", $correo, $clave);
-
+  // Ejecuta la consulta para insertar un nuevo usuario
   $stmt->execute();
 
-  $stmt->store_result();
-
-  if ($stmt->num_rows > 0) {
-    $stmt->bind_result($user_id, $user_correo, $user_rol);
-    $stmt->fetch();
-
-    $_SESSION["user_id"] = $user_id;
-    $_SESSION["correo"] = $user_correo;
-    $_SESSION["rol"] = $user_rol;
-
-    header("Location: index.php");
-    exit();
+  // Verifica si se insertó el usuario correctamente
+  if ($stmt->affected_rows > 0) {
+    // Usuario insertado correctamente
+    $_SESSION["success_message"] = "Usuario registrado correctamente.";
   } else {
-    $error_message = "Credenciales incorrectas. Inténtalo de nuevo.";
+    // Error al insertar el usuario
+    $_SESSION["error_message"] = "Error al registrar el usuario.";
   }
 
   $stmt->close();
@@ -66,7 +62,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   <form id="form" action="login.php" method="post">
     <h2>Inicio de sesión</h2>
-    <?php if (isset($error_message)) { ?>
+    <?php if (!empty($error_message)) { ?>
+      <!-- Muestra el mensaje de error solo si existe -->
       <div class="error-message"><?php echo $error_message; ?></div>
     <?php } ?>
     <div class="input-field">

@@ -17,8 +17,8 @@
         <div class="overlay-content">
           <a href="categorias.php">Categorías</a>
           <a href="#">Productos</a>
-          <a href="#">Pedidos</a>
-          <a href="#">Mi Cuenta</a>
+          <a href="#">Info</a>
+          <a href="micuenta.php">Mi Cuenta</a>
         </div>
       </div>
       <span onclick="openNav()"><img id="iconMen" src="../img/hambug.png"></span>

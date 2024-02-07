@@ -16,8 +16,7 @@
         <!-- Contenido Overlay -->
         <div class="overlay-content">
           <a href="categorias.php">Categorías</a>
-          <a href="#">Productos</a>
-          <a href="#">Info</a>
+          <a href="productos.php">Productos</a>
           <a href="micuenta.php">Mi Cuenta</a>
         </div>
       </div>

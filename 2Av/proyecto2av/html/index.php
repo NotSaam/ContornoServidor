@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,7 +34,7 @@
     </div>
 
     <div class="right">
-      <a href="login.php">
+      <a href="login.php">Usuario: <?php echo isset($_SESSION["correo"]) ? $_SESSION["correo"] : ""; ?>
         <img id="inicioFoto" src="../img/user-solid.svg">
       </a>
       <img id="carrito" src="../img/Carrito.png">

@@ -34,7 +34,7 @@ session_start();
     </div>
 
     <div class="right">
-      <a href="login.php">Usuario: <?php echo isset($_SESSION["correo"]) ? $_SESSION["correo"] : ""; ?>
+      <a href="login.php">USUARIO: <?php echo isset($_SESSION["correo"]) ? $_SESSION["correo"] : ""; ?>
         <img id="inicioFoto" src="../img/user-solid.svg">
       </a>
       <img id="carrito" src="../img/Carrito.png">

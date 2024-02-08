@@ -8,7 +8,7 @@ session_start();
 <head>
   <link rel="stylesheet" type="text/css" href="../css/index.css" />
   <link rel="icon" type="image/jpg" href="../img/favicon.png" />
-  <title>Inicio | Laboratorio Dentes</title>
+  <title>Mi Cuenta | Laboratorio Dentes</title>
 </head>
 
 <body>
@@ -40,6 +40,60 @@ session_start();
       <img id="carrito" src="../img/Carrito.png">
     </div>
   </div>
+
+  <?php
+
+// Verificar si el usuario ha iniciado sesión
+if (!isset($_SESSION["rol"])) {
+    // Redirigir al usuario a la página de inicio de sesión si no ha iniciado sesión
+    header("Location: login.php");
+    exit();
+}
+
+// Verificar el rol del usuario
+if ($_SESSION["rol"] == 1) {
+    // Usuario con rol 1 (admin)
+    $opciones = array(
+        "Alta de usuarios",
+        "Control de categorías",
+        "Control de productos"
+    );
+} else {
+    // Otros roles
+    $opciones = array(
+        // Opciones para otros roles si es necesario
+    );
+}
+?>
+    <p>Bienvenido, <?php echo isset($_SESSION["correo"]) ? $_SESSION["correo"] : "Usuario"; ?>.</p>
+    
+    <?php if ($_SESSION["rol"] == 1) { ?>
+        <!-- Mostrar opciones adicionales para el rol 1 -->
+        <h2>Opciones de Administrador:</h2>
+        <ul>
+            <?php foreach ($opciones as $opcion) { ?>
+                <li><?php echo $opcion; ?></li>
+            <?php } ?>
+        </ul>
+    <?php } ?>
+    
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   <!-- Script para el Menú Overlay -->
   <script>

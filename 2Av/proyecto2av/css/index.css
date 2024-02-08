@@ -27,6 +27,10 @@
   width: 50px;
 }
 
+.right a {
+  color:white;
+}
+
 .right {
   display: flex;
   align-items: center;
@@ -35,7 +39,6 @@
 
 #inicioFoto{
   width: 25px;
-  margin-right: 10px;
   cursor: pointer;
 }
 
@@ -43,7 +46,7 @@
 #carrito {
   width: 30px;
   margin-right: 20px;
-  margin-left: 20px;
+  margin-left: 15px;
   cursor: pointer;
 }
 
@@ -53,7 +56,7 @@
   margin-left:20px ;
 }
 
-/* Menú Overlay */
+/* Menú hamburguesa desplegable */
 .overlay {
   height: 100%;
   width: 0;
@@ -107,4 +110,4 @@
     right: 35px;
   }
 }
-/* Fin Menú Overlay */
+/* Fin del menú */

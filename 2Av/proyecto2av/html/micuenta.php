@@ -54,19 +54,22 @@ if (!isset($_SESSION["rol"])) {
 if ($_SESSION["rol"] == 1) {
     // Usuario con rol 1 (admin)
     $opciones = array(
-        "Alta de usuarios",
+        "Control de usuarios",
         "Control de categorías",
-        "Control de productos"
+        "Control de productos",
+        "Control de pedidos"
     );
 } else {
     // Otros roles
     $opciones = array(
-        // Opciones para otros roles si es necesario
-    );
+      "Mis pedidos",
+      "Control de categorías",
+      "Control de productos"
+  );
 }
 ?>
-    <p>Bienvenido, <?php echo isset($_SESSION["correo"]) ? $_SESSION["correo"] : "Usuario"; ?>.</p>
-    
+<!--     <p>Bienvenido, <?php echo isset($_SESSION["correo"]) ? $_SESSION["correo"] : "Usuario"; ?>.</p>
+ -->    
     <?php if ($_SESSION["rol"] == 1) { ?>
         <!-- Mostrar opciones adicionales para el rol 1 -->
         <h2>Opciones de Administrador:</h2>

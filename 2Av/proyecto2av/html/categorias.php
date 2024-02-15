@@ -8,7 +8,7 @@ session_start();
 <head>
   <link rel="stylesheet" type="text/css" href="../css/index.css" />
   <link rel="icon" type="image/jpg" href="../img/favicon.png" />
-  <title>Inicio | Laboratorio Dentes</title>
+  <title>Categorias | Laboratorio Dentes</title>
 </head>
 
 <body>
@@ -42,15 +42,7 @@ session_start();
   </div>
 
   <!-- Script para el Menú Overlay -->
-  <script>
-    function openNav() {
-      document.getElementById("myNav").style.width = "100%";
-    }
-
-    function closeNav() {
-      document.getElementById("myNav").style.width = "0%";
-    }
-  </script>
+  <script src="../js/index.js"></script>
 </body>
 
 </html>

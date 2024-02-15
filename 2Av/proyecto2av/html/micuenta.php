@@ -32,7 +32,7 @@ if ($_SESSION["rol"] == 1) {
   <link rel="stylesheet" type="text/css" href="../css/index.css" />
   <link rel="stylesheet" type="text/css" href="../css/micuenta.css" />
   <link rel="icon" type="image/jpg" href="../img/favicon.png" />
-  
+
   <title>Mi Cuenta | Laboratorio Dentes</title>
 </head>
 
@@ -70,22 +70,15 @@ if ($_SESSION["rol"] == 1) {
 
   <div class="opciones-container">
     <?php foreach ($opciones as $opcion => $pagina) { ?>
-      <div class="card shadow">
+      <a href="<?php echo $pagina; ?>" class="card shadow">
         <img class="fotoOpciones" src="../img/<?php echo strtolower(str_replace(" ", "", $opcion)); ?>.png" alt="<?php echo $opcion; ?>" width="80">
         <p><?php echo $opcion; ?></p>
-      </div>
+      </a>
     <?php } ?>
   </div>
 
-  <script>
-    function openNav() {
-      document.getElementById("myNav").style.width = "100%";
-    }
-
-    function closeNav() {
-      document.getElementById("myNav").style.width = "0%";
-    }
-  </script>
+  <!-- Script para el Menú Overlay -->
+  <script src="../js/index.js"></script>
 </body>
 
 </html>

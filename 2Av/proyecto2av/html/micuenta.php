@@ -1,5 +1,30 @@
 <?php
 session_start();
+
+// Verificar si el usuario ha iniciado sesión
+if (!isset($_SESSION["rol"])) {
+  // Redirigir al usuario a la página de inicio de sesión si no ha iniciado sesión
+  header("Location: login.php");
+  exit();
+}
+
+// Verificar el rol del usuario
+if ($_SESSION["rol"] == 1) {
+  // Usuario con rol 1 (admin)
+  $opciones = array(
+    "Control de usuarios" => "controluser.php",
+    "Control de categorías" => "controlcategorias.php",
+    "Control de productos" => "controlproductos.php",
+    "Control de pedidos" => "controlpedidos.php"
+  );
+} else {
+  // Otros roles
+  $opciones = array(
+    "Mis pedidos" => "mis_pedidos.php",
+    "Control de categorías" => "control_categorias.php",
+    "Control de productos" => "control_productos.php"
+  );
+}
 ?>
 
 <!DOCTYPE html>
@@ -7,6 +32,7 @@ session_start();
 
 <head>
   <link rel="stylesheet" type="text/css" href="../css/index.css" />
+  <link rel="stylesheet" type="text/css" href="../css/micuenta.css" />
   <link rel="icon" type="image/jpg" href="../img/favicon.png" />
   <title>Mi Cuenta | Laboratorio Dentes</title>
 </head>
@@ -41,64 +67,17 @@ session_start();
     </div>
   </div>
 
-  <?php
+  <p>Bienvenido, <?php echo isset($_SESSION["correo"]) ? $_SESSION["correo"] : "Usuario"; ?>.</p>
 
-// Verificar si el usuario ha iniciado sesión
-if (!isset($_SESSION["rol"])) {
-    // Redirigir al usuario a la página de inicio de sesión si no ha iniciado sesión
-    header("Location: login.php");
-    exit();
-}
-
-// Verificar el rol del usuario
-if ($_SESSION["rol"] == 1) {
-    // Usuario con rol 1 (admin)
-    $opciones = array(
-        "Control de usuarios",
-        "Control de categorías",
-        "Control de productos",
-        "Control de pedidos"
-    );
-} else {
-    // Otros roles
-    $opciones = array(
-      "Mis pedidos",
-      "Control de categorías",
-      "Control de productos"
-  );
-}
-?>
-<!--     <p>Bienvenido, <?php echo isset($_SESSION["correo"]) ? $_SESSION["correo"] : "Usuario"; ?>.</p>
- -->    
-    <?php if ($_SESSION["rol"] == 1) { ?>
-        <!-- Mostrar opciones adicionales para el rol 1 -->
-        <h2>Opciones de Administrador:</h2>
-        <ul>
-            <?php foreach ($opciones as $opcion) { ?>
-                <li><?php echo $opcion; ?></li>
-            <?php } ?>
-        </ul>
+  <div class="opciones-container">
+    <?php foreach ($opciones as $opcion => $pagina) { ?>
+      <div class="card shadow">
+        <img class="fotoOpciones" src="../img/<?php echo strtolower(str_replace(" ", "", $opcion)); ?>.png" alt="<?php echo $opcion; ?>" width="50">
+        <p><?php echo $opcion; ?></p>
+      </div>
     <?php } ?>
-    
-</body>
+  </div>
 
-</html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <!-- Script para el Menú Overlay -->
   <script>
     function openNav() {
       document.getElementById("myNav").style.width = "100%";

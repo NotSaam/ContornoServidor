@@ -20,9 +20,7 @@ if ($_SESSION["rol"] == 1) {
 } else {
   // Otros roles
   $opciones = array(
-    "Mis pedidos" => "mis_pedidos.php",
-    "Control de categorías" => "control_categorias.php",
-    "Control de productos" => "control_productos.php"
+    "MIS PEDIDOS" => "mis_pedidos.php",
   );
 }
 ?>
@@ -34,6 +32,7 @@ if ($_SESSION["rol"] == 1) {
   <link rel="stylesheet" type="text/css" href="../css/index.css" />
   <link rel="stylesheet" type="text/css" href="../css/micuenta.css" />
   <link rel="icon" type="image/jpg" href="../img/favicon.png" />
+  
   <title>Mi Cuenta | Laboratorio Dentes</title>
 </head>
 
@@ -67,12 +66,12 @@ if ($_SESSION["rol"] == 1) {
     </div>
   </div>
 
-  <p>Bienvenido, <?php echo isset($_SESSION["correo"]) ? $_SESSION["correo"] : "Usuario"; ?>.</p>
+  <h3>Bienvenide, <?php echo isset($_SESSION["correo"]) ? $_SESSION["correo"] : "Usuario"; ?>. Estas son las opciones de tu cuenta:</h3>
 
   <div class="opciones-container">
     <?php foreach ($opciones as $opcion => $pagina) { ?>
       <div class="card shadow">
-        <img class="fotoOpciones" src="../img/<?php echo strtolower(str_replace(" ", "", $opcion)); ?>.png" alt="<?php echo $opcion; ?>" width="50">
+        <img class="fotoOpciones" src="../img/<?php echo strtolower(str_replace(" ", "", $opcion)); ?>.png" alt="<?php echo $opcion; ?>" width="80">
         <p><?php echo $opcion; ?></p>
       </div>
     <?php } ?>
